@@ -8,27 +8,27 @@ import clear from "./clear.js";
 const ROT = window.ROT;
 
 const output = [
-	// "Loading...",
-	// "Textures............. OK",
-	// "Character models..... OK",
-	// "Generating dungeon... OK"
+	// "Cargando...",
+	// "Texturas............. OK",
+	// "Modelos del personaje..... OK",
+	// "Generando Dungeon... OK"
 ];
 
 const nope = () => {
 	let answers = [
-		"This box is empty :-(",
+		"La caja esta vacia! :-(",
 		"Nope",
 		"Nada",
 		"Bogus",
-		"Keep looking!"
+		"Continua mirando"
 	];
 
 	return answers[Math.floor(Math.random() * answers.length)];
 };
 
 /*
- * Maps the event keyCode to Rot direction.
- * The directions are clockwise, starting at the top:
+ * Asigna el código clave del evento a la dirección Rot.
+ * Las direcciones son en el sentido de las agujas del reloj, comenzando desde arriba:
  *
  * +------------+
  * | 7 | 0 | 1 |
@@ -65,7 +65,7 @@ class Player {
 		this._y = y;
 		this.game = game;
 
-		this.game.message("Find the pizza, Bro!");
+		this.game.message("¡Encuentra la pizza, hermano!");
 
 		document
 			.querySelector(".up")
@@ -91,7 +91,7 @@ class Player {
 
 	act() {
 		this.game.engine.lock();
-		/* wait for user input; do stuff when user hits a key */
+		/* esperar la entrada del usuario; hacer cosas cuando el usuario presiona una tecla */
 		window.addEventListener("keydown", this.handleEvent);
 	}
 
@@ -106,11 +106,11 @@ class Player {
 	handleEvent = event => {
 		let code = event.keyCode;
 		if (code === 32) {
-			// Space
+			// Espacio
 			this._checkBox();
 			return;
 		} else if (code === 81 || code === 27) {
-			// Q or ESC
+			// Q o ESC
 			this.game.quit();
 			return;
 		}
@@ -120,7 +120,7 @@ class Player {
 		}
 
 		event.preventDefault();
-		// Turn ended: remove listener
+		// Turno finalizado: eliminar oyente
 		window.removeEventListener("keydown", this.handleEvent);
 
 		let [dx, dy] = ROT.DIRS[8][keyMap[code]];
@@ -135,11 +135,11 @@ class Player {
 
 		let newKey = newX + "," + newY;
 
-		// Check if new spot is free
+		//Comprueba si el nuevo lugar está libre
 		if (!(newKey in this.game.map)) {
 			return;
 		}
-		// Draw new position using player data
+		// Dibuja una nueva posición usando los datos del jugador
 		this._x = newX;
 		this._y = newY;
 		// this._draw();
@@ -154,14 +154,14 @@ class Player {
 			this.game.engine.lock();
 			window.removeEventListener("keydown", this.handleEvent);
 
-			say("A winner is YOU!");
-			await alert("A winner is you!");
+			say("El ganador eres TU!");
+			await alert("El ganador eres TU!");
 			this.game.quit();
 		} else if (this.game.map[key] === BOX) {
 			this.game.message(nope());
 			this.game.map[key] = EMPTY_BOX;
 		} else {
-			this.game.message("Nothing here...");
+			this.game.message("Nada por aqui...);
 		}
 	}
 }
@@ -202,7 +202,7 @@ class Pedro {
 			await alert("Game over <br><br> you were captured by Pedro!");
 			this.game.quit();
 		}
-		// Only move half the time
+		
 		else if (Math.random() > 0.5) {
 			x = path[0][0];
 			y = path[0][1];
