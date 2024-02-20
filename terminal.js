@@ -4,7 +4,7 @@ import { on, off } from "./util/power.js";
 import { toggleFullscreen } from "./util/screens.js";
 import { type } from "./util/io.js";
 
-// Check if query param is set and load that command
+
 async function onload() {
 	const urlParams = new URLSearchParams(window.location.search);
 	const command = urlParams.get("command");
@@ -21,8 +21,7 @@ async function onload() {
 	}
 }
 
-// Change the command passed to the parse function in order to directly load that command.
-// Then visit /debug.html which calls this function in <body> onLoad().
+
 async function debug() {
 	const { power } = await import("./util/power.js");
 	const { main } = await import("./util/screens.js");
@@ -73,10 +72,10 @@ function fullscreen(event) {
 
 function globalListener({ keyCode }) {
 	if (keyCode === 122) {
-		// F11
+		
 		toggleFullscreen();
 	} else if (keyCode === 27) {
-		// ESC
+		
 		toggleFullscreen(false);
 	}
 }
@@ -86,7 +85,6 @@ document.getElementById("dial").addEventListener("input", event => {
 	setVolume(value);
 });
 
-// Define some stuff on the window so we can use it directly from the HTML
 Object.assign(window, {
 	debug,
 	onload,
