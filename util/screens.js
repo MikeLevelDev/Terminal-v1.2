@@ -8,7 +8,7 @@ import say from "./speak.js";
 async function boot() {
   clear();
   await type([
-    "Bienvenida mi amor, has sido hackeada y te robare todos tus besos",
+    "Bienvenido",
     " ",
     "> SET TERMINAL/BOOT",
     "Cargando........................",
@@ -32,7 +32,7 @@ async function login() {
   let user = await prompt("Username:");
   let password = await prompt("Password:", true);
 
-  if (user === "esposa" && password === "esposa") {
+  if (user === "Admin" && password === "Admin") {
     await pause();
     say("AUTHENTICATION SUCCESSFUL");
     await alert("AUTHENTICATION SUCCESSFUL");
