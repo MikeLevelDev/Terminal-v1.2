@@ -1,6 +1,5 @@
 // Inspiration:
 // - https://youtu.be/jDJHtLCHuAg
-// - http://aramor.epizy.com/fallout-terminal/password?diff=1
 
 import { getScreen, addTemplate } from "../util/screens.js";
 import { type } from "../util/io.js";
@@ -44,7 +43,7 @@ async function command() {
 async function intro() {
   let intro = getScreen("intro");
 
-  await type("Bienvenida a JYM Industries (TM) Termlink", FAST, intro);
+  await type("Bienvenido a las Industries (TM) Termlink", FAST, intro);
 
   await type(">SET TERMINAL/INQUIRE", {}, intro);
 
@@ -58,7 +57,7 @@ async function intro() {
 
   await type(
     [
-      "iniciando JYM Industries (TM) MF Boot Agent v2.3.0",
+      "iniciando Industries (TM) MF Boot Agent v2.3.0",
       "RETROS BIOS",
       "RBIOS-4.02.08.00 52EE5.E7.E8",
       "Copoyright 2201-2203 JYM Ind.",
@@ -82,7 +81,7 @@ async function game() {
   // Resolves on correct password
   return new Promise(async (resolve) => {
     await type(
-      ["Bienvenida a JYM Industries (TM) Termlink", "Password Required"],
+      ["Bienvenido a las Industries (TM) Termlink", "Password Required"],
       FAST,
       screen
     );
@@ -170,7 +169,7 @@ async function outro() {
   await new Promise(async (resolve) => {
     await type(
       [
-        "Bienvenida a JYM Industries (TM) Termlink",
+        "Bienvenida a las Industries (TM) Termlink",
         `"We're in the business of happiness"`,
       ],
       FAST,
