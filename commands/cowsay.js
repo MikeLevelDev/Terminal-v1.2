@@ -1,7 +1,3 @@
-/*
- * Credit to cowsay npm module:
- * https://github.com/piuccio/cowsay
- */
 let defaultCow = `
     $thoughts   ^__^
      $thoughts  ($eyes)\\_______
